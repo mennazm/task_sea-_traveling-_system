@@ -21,47 +21,8 @@ class ContractController extends Controller
         return view('contracts.index', compact('contracts'));
     }
    
-    // {
-    //     // Validate the request data
-    //     $request->validate([
-    //         'client_id' => 'required|exists:clients,id',
-    //         'start_date' => 'required|date',
-    //         'end_date' => 'required|date|after_or_equal:start_date',
-    //         'trips_count' => 'required|integer|min:1',
-    //     ]);
+
     
-    //     // Fetch the last contract to determine the next contract number
-    //     $latestContract = Contract::latest('id')->first();
-    
-    //     // Generate the next contract number
-    //     if ($latestContract) {
-    //         $lastNumber = intval(substr($latestContract->contract_number, 3));
-    //         $newContractNumber = 'ABC' . str_pad($lastNumber + 1, 6, '0', STR_PAD_LEFT);
-    //     } else {
-    //         $newContractNumber = 'ABC000001';
-    //     }
-    
-    //     // Store the new contract
-    //     $contract = new Contract();
-    //     $contract->client_id = $request->client_id;
-    //     $contract->contract_number = $newContractNumber;
-    //     $contract->start_date = $request->start_date;
-    //     $contract->end_date = $request->end_date;
-    //     $contract->trips_count = $request->trips_count;
-    //     $contract->save();
-    
-    //     // Generate trips based on the trips_count
-    //     $interval = Carbon::parse($request->start_date)->diffInDays($request->end_date) / $request->trips_count;
-    //     for ($i = 0; $i < $request->trips_count; $i++) {
-    //         $trip = new Trip();
-    //         $trip->contract_id = $contract->id;
-    //         $trip->trip_date = Carbon::parse($request->start_date)->addDays($i * $interval);
-    //         $trip->save();
-    //     }
-    
-    //     // Redirect to the contracts index with a success message
-    //     return redirect()->route('contracts.index')->with('success', 'Contract created successfully.');
-    // }
     
     public function store(Request $request)
     {
